@@ -45,8 +45,11 @@ for name in "${REPOS[@]}"; do
   if [[ "$MODE" == "--local" ]]; then
     echo "built $dir"
   else
-    gh repo create "$ORG/$name" --public --source "$dir" --push \
-      --description "merge-gate-lab fleet repo (deliberately insecure, do not deploy)"
+    gh repo view "$ORG/$name" >/dev/null 2>&1 || gh repo create "$ORG/$name" --public \
+      --description "merge-gate-lab fleet repo (deliberately insecure, do not deploy)" >/dev/null
+    # Push over HTTPS with gh's credentials, so it works without SSH keys.
+    git -C "$dir" -c credential.helper= -c credential.helper='!gh auth git-credential' \
+      push -q "https://github.com/$ORG/$name.git" main
     echo "created https://github.com/$ORG/$name"
   fi
 done
