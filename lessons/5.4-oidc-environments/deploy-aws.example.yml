@@ -1,0 +1,27 @@
+# Example only (not run in the lab: there is no cloud account). Deploy to AWS with OIDC instead
+# of stored access keys. The job asks GitHub for an OIDC token, AWS checks its claims against the
+# role's trust policy (trust-policy.example.json) and returns credentials that last one hour.
+name: deploy
+
+on:
+  push:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    environment: prod # the token's sub ends in :environment:prod only for jobs in this environment
+    permissions:
+      contents: read
+      id-token: write # lets this job, and only this job, request an OIDC token
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: arn:aws:iam::111122223333:role/legacy-cron-prod-deploy
+          aws-region: eu-west-1
+      - run: aws sts get-caller-identity

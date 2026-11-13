@@ -17,7 +17,7 @@ for r in "${repos[@]}"; do
   [[ -n "$n" ]] || continue
   # A PR opened seconds ago has no checks yet, and `gh pr checks` treats that as a failure.
   for _ in {1..12}; do
-    gh pr checks "$n" -R "$ORG/$r" --required 2>&1 | grep -q 'no checks reported' || break
+    gh pr checks "$n" -R "$ORG/$r" --required 2>&1 | grep -qE 'no (required )?checks reported' || break
     sleep 10
   done
   if gh pr checks "$n" -R "$ORG/$r" --watch --required >/dev/null; then

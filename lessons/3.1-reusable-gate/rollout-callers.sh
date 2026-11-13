@@ -5,6 +5,7 @@
 # same file, or with an open rollout PR, are skipped. Needs gh (`workflow` scope) and jq.
 #
 #   ORG=<your-test-org> ./rollout-callers.sh <tag> [audit|warn|block] [repo ...]
+#   TEMPLATE=<file> uses another caller template (5.3: the caller grants security-events: write).
 set -euo pipefail
 : "${ORG:?set ORG=<your-org>}"
 HERE="$(cd "$(dirname "$0")" && pwd)"
@@ -19,7 +20,7 @@ FILE=".github/workflows/security.yml"
 sha=$(gh api "repos/$ORG/$CENTRAL/commits/$TAG" --jq .sha)
 echo "$CENTRAL $TAG = $sha"
 content=$(sed -e "s|@ORG@|$ORG|g" -e "s|@SHA@|$sha|g" -e "s|@TAG@|$TAG|g" -e "s|@MODE@|$MODE|g" \
-  "$HERE/caller.yml.template")
+  "${TEMPLATE:-$HERE/caller.yml.template}")
 
 repos=("$@")
 if [[ ${#repos[@]} -eq 0 ]]; then
