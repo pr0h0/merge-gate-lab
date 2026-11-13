@@ -1,0 +1,12 @@
+# .github/security-exceptions.yml in a fleet repo. Owned by the security team (the
+# CODEOWNERS line for /.github/ covers it), so adding or extending an entry needs their review.
+# An entry covers gate findings with the same rule and path. Every field is required.
+# expires must be at most 90 days away; after that date the gate fails until the entry
+# is removed (with the fix) or the security team approves a new date.
+exceptions:
+  - id: EXC-001
+    rule: shell-command-from-request
+    path: src/server.js
+    reason: Host comes from a fixed list in the ops dashboard. Fix tracked in OPS-142.
+    owner: "@ORG/payments"
+    expires: 2026-12-15
