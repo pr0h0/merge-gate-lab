@@ -3,3 +3,7 @@ node_modules/
 lessons/*/scan/
 lessons/*/scorecard/
 lessons/*/backlog.md
+lessons/*/evidence/
+lessons/*/metrics-out/
+lessons/*/bypasses.json
+lessons/*/register.json
