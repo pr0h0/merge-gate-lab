@@ -1,0 +1,6 @@
+{
+  "sandbox": {
+    "enableWeakerNestedSandbox": true,
+    "network": { "allowAllUnixSockets": true }
+  }
+}

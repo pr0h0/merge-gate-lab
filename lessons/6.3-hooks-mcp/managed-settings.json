@@ -1,0 +1,27 @@
+{
+  "allowManagedHooksOnly": true,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|MultiEdit|NotebookEdit|Read",
+        "hooks": [{ "type": "command", "command": "/etc/claude-code/hooks/guard.sh" }]
+      }
+    ]
+  },
+  "allowManagedMcpServersOnly": true,
+  "allowedMcpServers": [
+    { "serverUrl": "https://mcp.internal.example.com/*" },
+    { "serverCommand": ["npx", "-y", "@modelcontextprotocol/server-filesystem@2.2.0", "."] }
+  ],
+  "deniedMcpServers": [
+    { "serverUrl": "*://*.ngrok-free.app:*/*" }
+  ],
+  "strictKnownMarketplaces": [
+    { "source": "github", "repo": "anthropics/claude-plugins-official" },
+    { "source": "github", "repo": "your-org/approved-plugins" }
+  ],
+  "blockedMarketplaces": [
+    { "source": "github", "repo": "untrusted-org/*" }
+  ],
+  "disableSideloadFlags": true
+}

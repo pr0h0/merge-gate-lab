@@ -1,0 +1,7 @@
+
+# Agent instructions and agent config: they change what coding agents do in this repo
+CLAUDE.md                 @ORG/security
+AGENTS.md                 @ORG/security
+/.claude/                 @ORG/security
+/.mcp.json                @ORG/security
+/.cursor/                 @ORG/security

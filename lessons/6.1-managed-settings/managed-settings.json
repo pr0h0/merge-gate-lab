@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/secrets/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.ssh/**)",
+      "Read(~/.config/gh/hosts.yml)",
+      "Read(~/.npmrc)"
+    ],
+    "disableBypassPermissionsMode": "disable"
+  },
+  "deniedMcpServers": [
+    { "serverUrl": "*://*.ngrok-free.app:*/*" }
+  ],
+  "cleanupPeriodDays": 30
+}
