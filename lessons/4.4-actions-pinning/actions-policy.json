@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "enabled_repositories": "all",
+    "allowed_actions": "selected",
+    "sha_pinning_required": true
+  },
+  "selected_actions": {
+    "github_owned_allowed": true,
+    "verified_allowed": true,
+    "patterns_allowed": [
+      "zizmorcore/zizmor-action@*"
+    ]
+  }
+}
