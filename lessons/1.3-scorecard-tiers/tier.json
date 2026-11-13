@@ -1,0 +1,8 @@
+{
+  "value_type": "single_select",
+  "required": true,
+  "default_value": "standard",
+  "allowed_values": ["critical", "standard", "sandbox"],
+  "description": "Risk tier: decides which rulesets and gates apply",
+  "values_editable_by": "org_actors"
+}

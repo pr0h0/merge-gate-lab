@@ -1,0 +1,6 @@
+{
+  "value_type": "string",
+  "required": false,
+  "description": "Team accountable for findings in this repo",
+  "values_editable_by": "org_actors"
+}

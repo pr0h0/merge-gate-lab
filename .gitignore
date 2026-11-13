@@ -1,2 +1,5 @@
 fleet/
 node_modules/
+lessons/*/scan/
+lessons/*/scorecard/
+lessons/*/backlog.md
