@@ -1,0 +1,16 @@
+{
+  "name": "ORG-autofix-agent",
+  "url": "https://github.com/ORG",
+  "description": "Identity for the org's coding agent. Opens PRs only; can't touch workflows, settings or other repos.",
+  "public": false,
+  "hook_attributes": { "url": "https://example.invalid/no-webhook", "active": false },
+  "redirect_url": "https://example.invalid/",
+  "default_permissions": {
+    "metadata": "read",
+    "contents": "write",
+    "pull_requests": "write",
+    "issues": "read",
+    "checks": "read"
+  },
+  "default_events": []
+}

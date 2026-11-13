@@ -21,6 +21,7 @@ if [ "${AS:-}" = root ]; then
 fi
 [ -n "${POLICY:-}" ] && opts+=(-v "$(cd "$POLICY" && pwd):/policy:ro")
 [ -n "${PROJECT:-}" ] && opts+=(-v "$(cd "$PROJECT" && pwd):/project:ro")
+[ -t 0 ] || opts+=(-i)   # pass stdin through when something is piped in (7.1)
 [ -n "${ANTHROPIC_API_KEY:-}" ] && opts+=(-e ANTHROPIC_API_KEY)
 [ -z "${ANTHROPIC_API_KEY:-}" ] && [ -f "$HOME/.claude/.credentials.json" ] &&
   opts+=(-v "$HOME/.claude/.credentials.json:$home/.claude/.credentials.json:ro")
