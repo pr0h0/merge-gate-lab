@@ -1,0 +1,28 @@
+# Files that decide what runs in CI, what gets installed and who has to review.
+# A change to any of them needs a review from the security team.
+# The last matching line wins. Keep these lines at the END of the file, below any
+# per-team ownership, or a broader line further down will take them away.
+
+# CI, Dependabot, and this file itself
+/.github/                 @ORG/security
+/CODEOWNERS               @ORG/security
+/docs/CODEOWNERS          @ORG/security
+
+# Dependencies: manifests, lockfiles and install config
+package.json              @ORG/security
+package-lock.json         @ORG/security
+npm-shrinkwrap.json       @ORG/security
+yarn.lock                 @ORG/security
+pnpm-lock.yaml            @ORG/security
+.npmrc                    @ORG/security
+
+# Containers and infrastructure as code
+Dockerfile*               @ORG/security
+docker-compose*.yml       @ORG/security
+compose*.yaml             @ORG/security
+*.tf                      @ORG/security
+*.tfvars                  @ORG/security
+
+# Auth and security code
+auth/                     @ORG/security
+security/                 @ORG/security
